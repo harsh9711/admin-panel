@@ -1,17 +1,28 @@
-"use client"
+"use client";
+import Loader from "@/components/admin-panel/Loader";
 import Login from "@/components/admin-panel/Login";
+import Sidebar from "@/components/admin-panel/Sidebar";
 import { useAppSelector } from "@/redux/hooks";
 import { useSession } from "next-auth/react";
 import React from "react";
 
-const layout = () => {
+const layout = ({ children }: { children: React.ReactNode }) => {
   const isloading = useAppSelector((store) => store.LoadingReducer);
   const { data: session } = useSession();
   if (!session?.user) {
     return <Login />;
   }
 
-  return <div>layout</div>;
+  return (
+    <div className="flex">
+   <Sidebar/>
+      <div className="w-full h-full">
+        {/* navbar */}
+        <div className="bg-gray-200 p-4 h-[calc(100vh-64px)]">{children}</div>
+      </div>
+      {isloading && <Loader/>}
+    </div>
+  );
 };
 
 export default layout;

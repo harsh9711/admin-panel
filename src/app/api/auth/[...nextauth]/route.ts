@@ -11,4 +11,4 @@ const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,     
 });
 
-export default handler; 
+export { handler as GET, handler as POST };
