@@ -11,6 +11,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
     "@types/next-auth": "^3.15.0",
+    "axios": "^1.7.7",
+    "mongoose": "^8.7.1",
     "next": "14.2.15",
     "next-auth": "^4.24.8",
     "react": "^18",
