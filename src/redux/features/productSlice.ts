@@ -16,10 +16,11 @@ const initialState: IProduct = {
   category: "",
 };
 export const productSlice = createSlice({
-  name: "productSlice",
+  name: "products",
   initialState,
   reducers: {
     setProduct: (state, action: PayloadAction<IProduct>) => {
+      
       return action.payload;
     },
   },

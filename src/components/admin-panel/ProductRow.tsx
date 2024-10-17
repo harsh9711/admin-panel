@@ -20,6 +20,7 @@ const ProductRow = ({
 }: PropsType) => {
   const dispatch = useAppDispatch();
   const onEdit = () => {
+    console.log("Editing Product:", product); 
     dispatch(setProduct(product));
     setOpenPopup(true);
   };
@@ -42,7 +43,7 @@ const ProductRow = ({
         />
       </td>
       <td>
-        <div className="text-2x1 flex items-center gap-2 text-gray-600">
+        <div className="text-2xl flex items-center gap-2 text-gray-600">
           <CiEdit
             className="cursor-pointer hover:text-black"
             onClick={onEdit}

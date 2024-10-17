@@ -15,12 +15,12 @@ const layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="flex">
-   <Sidebar/>
+      <Sidebar />
       <div className="w-full h-full">
         {/* navbar */}
         <div className="bg-gray-200 p-4 h-[calc(100vh-64px)]">{children}</div>
       </div>
-      {isloading && <Loader/>}
+      {isloading && <Loader />}
     </div>
   );
 };
