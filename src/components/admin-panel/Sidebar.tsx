@@ -4,6 +4,7 @@ import { MdDashboard, MdManageAccounts } from "react-icons/md";
 import { GrTransaction } from "react-icons/gr";
 import { IoAnalytics, IoSettings } from "react-icons/io5";
 import { RiShoppingCartLine } from "react-icons/ri";
+import Link from "next/link";
 
 const menus = [
   {
@@ -50,10 +51,10 @@ const Sidebar = () => {
             key={index}
             className="flex flex-row items-center gap-4 border p-4 bg-gray-200 hover:bg-pink-600"
           >
-            <a href={menu.href} className="menu-link">
+            <Link href={menu.href} className="flex gap-4 items-center">
               {menu.icon}
-            </a>{" "}
-            <span>{menu.title}</span>
+              <span>{menu.title}</span>
+            </Link>{" "}
           </li>
         ))}
       </ul>
