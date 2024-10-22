@@ -36,7 +36,7 @@ const ProductRow = ({
       <td>$ {product.price}</td>
       <td className="py-2">
         <Image
-          src={product.imgSrc}
+          src={product?.imgSrc}
           width={40}
           height={40}
           alt="product_image"

@@ -63,8 +63,11 @@ const ProductForm: React.FC = () => {
         alt="product_image"
       />
    <UploadButton<UploadResponse,any>
+    
   endpoint="imageUploader"
   onClientUploadComplete={(res) => {
+    console.log('Upload response:', res);
+
     if (res && res[0]) {
       setPayload({
         ...payload,
