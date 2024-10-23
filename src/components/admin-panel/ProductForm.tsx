@@ -5,7 +5,8 @@ import { setLoading } from "@/redux/features/loadingSlice";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Image from "next/image";
-import { UploadButton } from "@uploadthing/react";
+// import { UploadButton } from "@uploadthing/react";
+import { UploadButton } from "../../utils/uploadthing";
 
 interface IPayload {
   imgSrc: string | null;
@@ -62,25 +63,26 @@ const ProductForm: React.FC = () => {
         height={500}
         alt="product_image"
       />
-   <UploadButton<UploadResponse,any>
-    
-  endpoint="imageUploader"
-  onClientUploadComplete={(res) => {
-    console.log('Upload response:', res);
-
-    if (res && res[0]) {
-      setPayload({
-        ...payload,
-        imgSrc: res[0].url,
-        fileKey: res[0].key,
-      });
-    }
-  }}
-  onUploadError={(error: Error) => {
-    toast.error("Image upload failed!");
-    console.error(`ERROR! ${error.message}`);
-  }}
-/>
+      <UploadButton
+        endpoint="imageUploader"
+        onClientUploadComplete={(res) => {
+          console.log("Files: ", res);
+          alert("Upload Completed");
+          if (res && res[0]) {
+            setPayload({
+              ...payload,
+              imgSrc: res[0].url, // Ensure this URL is correct
+              fileKey: res[0].key, // Ensure the file key is captured
+            });
+          }
+        }}
+        onUploadError={(error: Error) => {
+          toast.error("Image upload failed!");
+          console.error(`ERROR! ${error.message}`);
+          alert(`ERROR! ${error.message}`);
+        }}
+      />
+   
 
       <div>
         <label className="block ml-1">Product Name</label>

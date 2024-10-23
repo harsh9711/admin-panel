@@ -1,9 +1,18 @@
 import { createRouteHandler } from "uploadthing/next";
-import { ourFileRouter } from "./core";
+import { ourFileRouter } from "./core"; 
+import { UTApi } from "uploadthing/server";
+
 
 export const { GET, POST } = createRouteHandler({
   router: ourFileRouter,
-
-  // Apply an (optional) custom config:
-  // config: { ... },
+  config: {
+    token: process.env.UPLOADTHING_TOKEN,
+  },
 });
+export async function DELETE(request: Request) {
+  const { filekey } = await request.json();
+  const utApi = new UTApi();
+  await utApi.deleteFiles(filekey);
+
+  return Response.json({ message: "Image Deleted" });
+}
